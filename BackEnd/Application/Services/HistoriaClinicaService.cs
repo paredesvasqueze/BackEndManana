@@ -30,7 +30,11 @@ namespace Services
             return await _repository.AddAsync(historiaclinica);
         }
 
+<<<<<<< HEAD
         public async Task<int> Update(HistoriaClinica historiaclinica)
+=======
+        public async Task<int> ActualizarAsync(HistoriaClinica dto)
+>>>>>>> 95a90f62b513dc0ea4519f217769ba723289ae3c
         {
             return await _repository.Update(historiaclinica);
         }
