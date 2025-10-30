@@ -1,18 +1,17 @@
-﻿using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Domain.Entities;
+using Models;
 
-namespace Application.Interfaces
+namespace Services
 {
     public interface IHistoriaClinicaService
     {
-        Task<IEnumerable<HistoriaClinica>> ObtenerTodosAsync();
-        Task<HistoriaClinica?> ObtenerPorIdAsync(int id);
-        Task<int> CrearAsync(HistoriaClinica dto);
-        Task<int> ActualizarAsync(HistoriaClinica dto);
-        Task<int> EliminarAsync(int id);
+        Task<IEnumerable<HistoriaClinica>> GetAllAsync();
+        Task<HistoriaClinica?> GetByIdAsync(int id);
+        Task<int> AddAsync(HistoriaClinica historiaclinica);
+        Task<int> UpdateAsync(HistoriaClinica historiaclinica);
+        Task<int> DeleteAsync(int id);
+        Task<int> HistoriaClinica(HistoriaClinica historiaclinica);
     }
 }

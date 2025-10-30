@@ -1,10 +1,13 @@
 ﻿using Application.Interfaces;
 using Domain.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Models;
+using Services;
 
 namespace API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class HistoriaClinicaController : ControllerBase
     {
         private readonly IHistoriaClinicaService _service;
@@ -19,43 +22,49 @@ namespace API.Controllers
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
-            var items = await _service.ObtenerTodosAsync();
+            var items = await _service.GetAllAsync();
             return Ok(items);
         }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var item = await _service.ObtenerPorIdAsync(id);
-            if (item == null) return NotFound();
+            var item = await _service.GetByIdAsync(id);
+            if (item == null)
+                return NotFound();
             return Ok(item);
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create([FromBody] HistoriaClinica dto)
+        public async Task<IActionResult> Create([FromBody] HistoriaClinica historiaclinica)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            var newId = await _service.CrearAsync(dto);
+            var newId = await _service.AddAsync(historiaclinica);
             return CreatedAtAction(nameof(GetById), new { id = newId }, new { Id = newId });
         }
 
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromBody] HistoriaClinica dto)
+        public async Task<IActionResult> Update([FromBody] HistoriaClinica historiaclinica)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-            //if (id != dto.Id) return BadRequest("Id No Encontrado");
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            var rows = await _service.ActualizarAsync(dto);
-            if (rows == 0) return NotFound();
+            var rows = await _service.HistoriaClinica(historiaclinica);
+            if (rows == 0)
+                return NotFound();
+
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var rows = await _service.EliminarAsync(id);
-            if (rows == 0) return NotFound();
+            var rows = await _service.DeleteAsync(id);
+            if (rows == 0)
+                return NotFound();
+
             return NoContent();
         }
     }

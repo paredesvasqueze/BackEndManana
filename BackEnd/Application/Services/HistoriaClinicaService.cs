@@ -1,50 +1,43 @@
-﻿using Application.Interfaces;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Domain.Entities;
 using Infrastructure.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Models;
 
-namespace Application.Services
+namespace Services
 {
     public class HistoriaClinicaService : IHistoriaClinicaService
     {
-        private readonly IHistoriaClinicaRepository _repo;
+        private readonly IHistoriaClinicaRepository _repository;
 
-        public HistoriaClinicaService(IHistoriaClinicaRepository repo)
+        public HistoriaClinicaService(IHistoriaClinicaRepository repository)
         {
-            _repo = repo;
+            _repository = repository;
         }
 
-        public async Task<IEnumerable<HistoriaClinica>> ObtenerTodosAsync()
+        public async Task<IEnumerable<HistoriaClinica>> GetAll()
         {
-            var entidades = await _repo.ObtenerTodosAsync();
-            return entidades;
+            return await _repository.GetAll();
         }
 
-        public async Task<HistoriaClinica?> ObtenerPorIdAsync(int id)
+        public async Task<HistoriaClinica?> GetById(int id)
         {
-            var e = await _repo.ObtenerPorIdAsync(id);
-            if (e == null) return null;
-            return e;
+            return await _repository.GetById(id);
         }
 
-        public async Task<int> CrearAsync(HistoriaClinica dto)
+        public async Task<int> AddAsync(HistoriaClinica historiaclinica)
         {
-
-            return await _repo.InsertarAsync(dto);
+            return await _repository.AddAsync(historiaclinica);
         }
 
-        public async Task<int> ActualizarAsync(HistoriaClinicao dto)
+        public async Task<int> Update(HistoriaClinica historiaclinica)
         {
-            return await _repo.ActualizarAsync(dto);
+            return await _repository.Update(historiaclinica);
         }
 
-        public async Task<int> EliminarAsync(int id)
+        public async Task<int> Delete(int id)
         {
-            return await _repo.EliminarAsync(id);
+            return await _repository.Delete(id);
         }
     }
 }

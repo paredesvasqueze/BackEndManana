@@ -2,6 +2,7 @@ using Application.Interfaces;
 using Application.Services;
 using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
+using Infrastructure.Repositories.Infrastructure.Repositories;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,14 +14,15 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "API de Productos",
+        Title = "API de HistoriaClinica",
         Version = "v1"
     });
 });
 
 // DI - registra implementaciones
-builder.Services.AddScoped<IHistoriaClinicaRepository, HistoriaClinicaRepository>();
-builder.Services.AddScoped<IHistoriaClinicaService, HistoriaClinicaService>();
+builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
+builder.Services.AddScoped<IProductoService, ProductoService>();
+
 
 builder.Services.AddScoped<IHistoriaClinicaRepository, HistoriaClinicaRepository>();
 builder.Services.AddScoped<IHistoriaClinicaService, HistoriaClinicaService>();
