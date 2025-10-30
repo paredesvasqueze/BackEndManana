@@ -9,28 +9,12 @@ namespace Domain.Entities
 {
     public class HistoriaClinica
     {
-        [Required(ErrorMessage = "El Id es obligatorio")]
-        public int Id { get; set; }
-
-
-        [Required(ErrorMessage = "El nombre es obligatorio")]
-        [StringLength(100, ErrorMessage = "El nombre no puede tener más de 100 caracteres")]
-        public string Nombre { get; set; }
-
-        [Required(ErrorMessage = "La descripción es obligatoria")]
-        [StringLength(250)]
-        public string Descripcion { get; set; }
-
-        [Range(0.01, 10000, ErrorMessage = "El precio debe ser mayor a 0")]
-        public decimal Precio { get; set; }
-
-        [Range(0, 1000, ErrorMessage = "El stock debe ser al menos 0")]
-        public int Stock { get; set; }
-
-        [Required(ErrorMessage = "Debe Seleccionar una Categoria")]
-        public int CategoriaId { get; set; }
-
-        public string? cNombreCategoria { get; set; }
-
+        public int nIdHistoria { get; set; } // Para Obtener/Actualizar/Eliminar
+        public int nIdPaciente { get; set; }
+        public DateTime dFechaRegistro { get; set; }
+        public string? cDiagnostico { get; set; }
+        public string? cTratamiento { get; set; }
+        public string? cObservaciones { get; set; }
+        // ... otras propiedades que necesites, pero Dapper solo usará las que mapeen
     }
 }

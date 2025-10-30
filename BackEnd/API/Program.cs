@@ -13,14 +13,10 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "API de Productos",
+        Title = "API de HistoriaClinica",
         Version = "v1"
     });
 });
-
-// DI - registra implementaciones
-builder.Services.AddScoped<IHistoriaClinicaRepository, HistoriaClinicaRepository>();
-builder.Services.AddScoped<IHistoriaClinicaService, HistoriaClinicaService>();
 
 builder.Services.AddScoped<IHistoriaClinicaRepository, HistoriaClinicaRepository>();
 builder.Services.AddScoped<IHistoriaClinicaService, HistoriaClinicaService>();

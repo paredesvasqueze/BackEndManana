@@ -37,7 +37,7 @@ namespace Application.Services
             return await _repo.InsertarAsync(dto);
         }
 
-        public async Task<int> ActualizarAsync(HistoriaClinicao dto)
+        public async Task<int> ActualizarAsync(HistoriaClinica dto)
         {
             return await _repo.ActualizarAsync(dto);
         }
