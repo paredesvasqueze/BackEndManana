@@ -1,14 +1,13 @@
-﻿using System;
-using Domain.Entities;
+﻿using Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace Infrastructure.Interfaces
+namespace Application.Interfaces
 {
-    public interface IDepartamentoHospitalRepository
+    public interface IDepartamentoHospitalService
     {
         Task<IEnumerable<DepartamentoHospital>> GetAllAsync();
         Task<DepartamentoHospital?> GetByIdAsync(int id);

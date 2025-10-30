@@ -22,6 +22,9 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
 builder.Services.AddScoped<IProductoService, ProductoService>();
 
+builder.Services.AddScoped<IDepartamentoHospitalRepository, DepartamentoHospitalRepository>();
+builder.Services.AddScoped<IDepartamentoHospitalService, DepartamentoHospitalService>();
+
 // Logging, CORS, etc.
 builder.Services.AddLogging();
 
