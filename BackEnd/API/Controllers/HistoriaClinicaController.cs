@@ -2,11 +2,10 @@
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Models;
-using Services;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class HistoriaClinicaController : ControllerBase
     {
@@ -51,7 +50,7 @@ namespace API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var rows = await _service.HistoriaClinica(historiaclinica);
+            var rows = await _service.UpdateAsync(historiaclinica);
             if (rows == 0)
                 return NotFound();
 

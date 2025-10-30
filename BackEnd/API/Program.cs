@@ -2,7 +2,6 @@ using Application.Interfaces;
 using Application.Services;
 using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
-using Infrastructure.Repositories.Infrastructure.Repositories;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,14 +18,10 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-<<<<<<< HEAD
-// DI - registra implementaciones
 builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
 builder.Services.AddScoped<IProductoService, ProductoService>();
 
 
-=======
->>>>>>> 95a90f62b513dc0ea4519f217769ba723289ae3c
 builder.Services.AddScoped<IHistoriaClinicaRepository, HistoriaClinicaRepository>();
 builder.Services.AddScoped<IHistoriaClinicaService, HistoriaClinicaService>();
 

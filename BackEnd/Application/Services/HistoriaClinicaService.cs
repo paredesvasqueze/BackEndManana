@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Application.Interfaces;
 using Domain.Entities;
 using Infrastructure.Interfaces;
 using Models;
 
-namespace Services
+
+namespace Application.Services
 {
     public class HistoriaClinicaService : IHistoriaClinicaService
     {
@@ -15,14 +17,14 @@ namespace Services
             _repository = repository;
         }
 
-        public async Task<IEnumerable<HistoriaClinica>> GetAll()
+        public async Task<IEnumerable<HistoriaClinica>> GetAllAsync()
         {
-            return await _repository.GetAll();
+            return await _repository.GetAllAsync();
         }
 
-        public async Task<HistoriaClinica?> GetById(int id)
+        public async Task<HistoriaClinica?> GetByIdAsync(int id)
         {
-            return await _repository.GetById(id);
+            return await _repository.GetByIdAsync(id);
         }
 
         public async Task<int> AddAsync(HistoriaClinica historiaclinica)
@@ -30,18 +32,16 @@ namespace Services
             return await _repository.AddAsync(historiaclinica);
         }
 
-<<<<<<< HEAD
-        public async Task<int> Update(HistoriaClinica historiaclinica)
-=======
-        public async Task<int> ActualizarAsync(HistoriaClinica dto)
->>>>>>> 95a90f62b513dc0ea4519f217769ba723289ae3c
+        public async Task<int> UpdateAsync(HistoriaClinica historiaclinica)
         {
-            return await _repository.Update(historiaclinica);
+            return await _repository.UpdateAsync(historiaclinica);
         }
 
-        public async Task<int> Delete(int id)
+        public async Task<int> DeleteAsync(int id)
         {
             return await _repository.Delete(id);
         }
+
+        
     }
 }

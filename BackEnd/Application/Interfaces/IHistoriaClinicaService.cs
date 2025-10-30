@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Domain.Entities;
 using Models;
 
-namespace Services
+namespace Application.Interfaces
 {
     public interface IHistoriaClinicaService
     {
@@ -11,7 +11,6 @@ namespace Services
         Task<HistoriaClinica?> GetByIdAsync(int id);
         Task<int> AddAsync(HistoriaClinica historiaclinica);
         Task<int> UpdateAsync(HistoriaClinica historiaclinica);
-        Task<int> DeleteAsync(int id);
-        Task<int> HistoriaClinica(HistoriaClinica historiaclinica);
+        Task<int> DeleteAsync(int id);        
     }
 }
